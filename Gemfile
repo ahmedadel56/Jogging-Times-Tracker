@@ -47,11 +47,25 @@ gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-gem 'bullet'
-gem 'cancancan'
-gem 'devise'
-gem 'rubocop', '>= 1.0', '< 2.0'
 
+# eager loading with Bullet
+gem 'bullet'
+# Authorization using cancancan
+gem 'cancancan'
+# rubocob linter
+gem 'bcrypt'
+gem 'rubocop', '>= 1.0', '< 2.0'
+# authenticate using Json Web Token and devise gem
+gem 'devise'
+gem 'jwt'
+
+gem 'ffi'
+# for API documentation test
+gem 'rswag'
+# CORS support for Rails
+gem 'rack-cors'
+# Generate a secret key for use in your application
+gem 'dotenv-rails'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'capybara'
