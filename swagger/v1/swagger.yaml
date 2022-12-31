@@ -1,0 +1,154 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/v1/auth/login":
+    post:
+      summary: Login
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: User login successfully!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+  "/v1/most_recent":
+    get:
+      summary: Most Recent Hotels
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: Success
+  "/v1/users":
+    post:
+      summary: Create User
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: User created successfully!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+  "/v1/users/{id}/hotels":
+    get:
+      summary: List of Hotels
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Success!
+    post:
+      summary: Create a Hotel
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Hotel created Successfully!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                cost:
+                  type: float
+                address:
+                  type: string
+                image:
+                  type: string
+  "/v1/users/{id}/hotels/{id}":
+    get:
+      summary: View a Hotel
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Success!
+    delete:
+      summary: Remove a Hotel
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Hotel removed Successfully!
+  "/v1/users/{id}/reservations":
+    get:
+      summary: List of Reservations for a user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Success!
+    post:
+      summary: Create a Reservations
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Reservation added Successfully!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                date:
+                  type: date
+                number_of_days:
+                  type: integer
+                number_of_guests:
+                  type: integer
+                number_of_rooms:
+                  type: integer
+                hotel_id:
+                  type: integer
+  "/v1/users/{id}/reservations/{id}":
+    delete:
+      summary: Remove a Reservation
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '201':
+          description: Hotel removed Successfully!
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
