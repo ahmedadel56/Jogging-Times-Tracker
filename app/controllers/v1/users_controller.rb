@@ -2,6 +2,8 @@ class V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authorize_request, only: :create
 
+  load_and_authorize_resource
+
   def index
     render json: User.all
   end
@@ -19,7 +21,7 @@ class V1::UsersController < ApplicationController
 
   def destroy
     sign_out
-    render json: { status: 200, message: 'User logout successfully!' }
+    render json: { status: 200, message: 'User removed successfully!' }
   end
 
   private
