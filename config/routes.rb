@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
   namespace :v1, defaults: { format: :json } do
     resources :users do
-      resources :hotels, only: [:index, :create, :destroy]
-      resources :reservations, only: [:index, :create, :destroy]
+      resources :jogging_times
     end
     # resources :users
         post '/auth/login', to: 'authentication#login'
