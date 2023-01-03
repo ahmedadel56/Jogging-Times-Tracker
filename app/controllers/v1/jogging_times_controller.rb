@@ -3,7 +3,18 @@ class V1::JoggingTimesController < ApplicationController
 
   def index
     @user_jogging_times = User.includes(:jogging_times).find(params[:user_id])
-    render json: @user_jogging_times.jogging_times
+    # render json: @user_jogging_times.jogging_times.where(date: params[:date]).order("created_at DESC")
+    if params[:from].nil? && !params[:to].nil?
+      render json: @user_jogging_times.jogging_times.where('date <= ?', params[:to]).order('created_at DESC')
+    elsif !params[:from].nil? && params[:to].nil?
+      render json: @user_jogging_times.jogging_times.where('date >= ?', params[:from]).order('created_at DESC')
+
+    elsif !params[:from].nil? && !params[:to].nil?
+      render json: @user_jogging_times.jogging_times.where('date >= ? AND date <= ?', params[:from],
+                                                           params[:to]).order('created_at DESC')
+    else
+      render json: @user_jogging_times.jogging_times.order('created_at DESC')
+    end
   end
 
   def show
@@ -46,6 +57,13 @@ class V1::JoggingTimesController < ApplicationController
     params.permit(
       :minutes,
       :distance,
+      :date
+    )
+  end
+
+  def jogging_time_sort_params
+    params.permit(
+      :from,
       :date
     )
   end
