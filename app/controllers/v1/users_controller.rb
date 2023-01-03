@@ -2,7 +2,8 @@ class V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authorize_request, only: :create
 
-  # load_and_authorize_resource
+  before_action :authenticate_v1_user!
+  load_and_authorize_resource
 
   def index
     render json: User.all
@@ -10,13 +11,15 @@ class V1::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user
+    # render json: @
+    render json: {massage: current_v1_user}
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       auth_token = AuthenticateUser.new(user.email, user.password).call
+      sign_in @user
       render json: { status: 201, message: 'User created successfully!', content: { auth_token: } }
     else
       render json: { status: 206, message: 'User is not created successfully!' }
