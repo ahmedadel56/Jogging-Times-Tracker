@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     devise_for :users
     resources :users do
       resources :jogging_times
+      # get '/jogging_times/weekly_report', to: 'jogging_times#weekly_report'
+      get '/weekly_report', to: 'jogging_times#weekly_report'
     end
     # resources :users
         post '/auth/login', to: 'authentication#login'

@@ -51,6 +51,29 @@ class V1::JoggingTimesController < ApplicationController
     end
   end
 
+  def weekly_report
+    if params[:date].nil?
+      render json: { error: 'please enter proper date' }
+    else
+      @date = Date.parse params[:date]
+      # days_to_week_start is a built in methode that provides previous sunday date based on the date you provide
+      # As a muslim week starts at saturday that's why I added +2  to days_to_week_start
+      @days_after_saturday = (@date.days_to_week_start + 2)
+      @week_beginning_date = @date - @days_after_saturday
+      @user_jogging_times = User.includes(:jogging_times).find(params[:user_id])
+      @filterd_user_jogging_times = @user_jogging_times.jogging_times.where('date >= ? AND date <= ?',
+                                                                            @week_beginning_date, @date)
+      @distance = 0
+      @time = 0
+      @filterd_user_jogging_times.each do |jogging_time|
+        @distance += jogging_time[:distance]
+        @time += jogging_time[:minutes]
+      end
+      render json: { speed_average: "#{@distance / @time} m / minute",
+                     distance_average: "#{@distance / @days_after_saturday} m / day" }
+    end
+  end
+
   private
 
   def jogging_time_params
