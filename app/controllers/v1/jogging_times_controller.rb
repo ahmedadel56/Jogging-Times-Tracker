@@ -1,5 +1,5 @@
 class V1::JoggingTimesController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   def index
     @user_jogging_times = User.includes(:jogging_times).find(params[:user_id])

@@ -12,7 +12,7 @@ class V1::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # render json: @
-    render json: {massage: current_v1_user}
+    render json: { massage: current_user }
   end
 
   def create

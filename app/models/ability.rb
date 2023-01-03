@@ -1,21 +1,26 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
     # Define abilities for the user here. For example:
     #
-      return unless user.present?
-      can :manage, JoggingTime, User, user: user
-      
-      # return unless user.role => 'manager'
-      can :manage, User if user[:role] == 'manager'
-      
-      # return unless user.role => 'admin'
-      can :manage, :all if user[:role] == 'admin'
+    return unless user.present?
 
-    
+    can :manage, JoggingTime, user_id: user.id
+    can :manage, User if user[:role] == 'manager'
+    can :manage, :all if user[:role] == 'admin'
+
+    # can :manage, User, user: user
+    # can :manage, JoggingTime, user: user
+
+    # # return unless user.role => 'manager'
+    # if user[:role] == 'manager'
+    #   can only :manage, User
+    #   cannot :manage ,JoggingTime
+    # end
+    # # return unless user.role => 'admin'
+    # can :manage, :all if user[:role] == 'admin'
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
