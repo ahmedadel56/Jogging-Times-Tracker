@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, unless: :json_request
   before_action :update_allowed_parameters, if: :devise_controller?
   before_action :authorize_request, if: :json_request
+  # before_action :authenticate_v1_user!
+  alias current_user current_v1_user
 
   protected
 
@@ -23,6 +25,7 @@ class ApplicationController < ActionController::Base
     begin
       @decoded = JsonWebToken.decode(header)
       @current_user = User.find(@decoded[:user_id])
+      # current_user = @current_user
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: :unauthorized
     end

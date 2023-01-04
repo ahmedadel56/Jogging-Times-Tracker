@@ -3,5 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :jogging_times, dependent: :destroy
-  validates :name, :email, :password, presence: true, length: { minimum: 3, maximum: 250 }
+  validates :name, :email, presence: true, length: { minimum: 3, maximum: 250 }
 end

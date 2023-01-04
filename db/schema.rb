@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_120749) do
   enable_extension "plpgsql"
 
   create_table "jogging_times", force: :cascade do |t|
-    t.float "minutes"
-    t.float "distance"
-    t.date "date"
+    t.float "minutes", null: false
+    t.float "distance", null: false
+    t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_120749) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "role", default: "jogger"
+    t.string "name", null: false
+    t.string "role", default: "jogger", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

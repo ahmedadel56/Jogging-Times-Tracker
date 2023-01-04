@@ -90,3 +90,5 @@ gem 'bullet'
 
 # for API documentation
 gem 'rswag'
+# authorization
+gem 'cancancan'
