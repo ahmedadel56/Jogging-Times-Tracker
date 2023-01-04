@@ -49,8 +49,9 @@ To get a local copy up and running follow these simple example steps.
 
 ## Recorded Videos
 
-[Vidoe 1](https://www.loom.com/share/a875eb779d2a45d29fcd3843acb7db51)
-[Vidoe 2](httpshttps://www.loom.com/share/3da8d3898cad4dfab331e602a16672b7)
+- [Vidoe 1](https://www.loom.com/share/a875eb779d2a45d29fcd3843acb7db51)
+
+- [Vidoe 2](https://www.loom.com/share/3da8d3898cad4dfab331e602a16672b7)
 
 
 
