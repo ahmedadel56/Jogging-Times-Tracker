@@ -1,6 +1,6 @@
 #  Jogging-Times-Tracker
 
-This is the back-end API for Jogging-Times Tracker+ tracks your distance, pace, and more. It's the most accurate running distance/time tracker available on the market, packed into the simplest & most gorgeous interface. It also maintains a history of your runs and improvements over time and shows you a complete log of your running activities
+This is the back-end API for Jogging-Times Tracker+, which tracks your distance, pace, and more. It's the most accurate running distance/time tracker available on the market, packed into the simplest & most gorgeous interface. It also maintains a history of your runs and improvements over time and shows you a complete log of your running activities
 
 
 - Authentication: Create account/login/logout.
@@ -31,7 +31,7 @@ Read the complete documentation [here](http://localhost:3000/api-docs/index.html
 To get a local copy up and running follow these simple example steps.
 
 - Click on the top right green "code" button.
-- On the dropdown menu, choose the "download with zip" button.
+- Choose the "download with zip" button on the dropdown menu.
 - After downloading, extract the zip file and you have the project on your machine.
 - Make sure that your PostgreSQL server is running and that you can establish a connection with the database.
 - Execute `rails db:create` to create the database.
@@ -46,12 +46,6 @@ To get a local copy up and running follow these simple example steps.
 - Run the `rspec` command in this case over the path of `spec/`, and the resulting command will look like this: `rspec spec/`.
 - If you want to run the tests over the entire project, you can execute the following command: `rspec`
 - you can make a documentation test by just running `rake rswag:specs:swaggerize `.
-
-## Recorded Videos
-- [Vidoe 1](https://www.loom.com/share/3da8d3898cad4dfab331e602a16672b7)
-- [Vidoe 2](https://www.loom.com/share/a875eb779d2a45d29fcd3843acb7db51)
-
-
 
 
 ## Authors
